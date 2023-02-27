@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Speck Academy 2023</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div style="display:flex; justify-content: space-between;">
+        <label id="title" for="technologies">My technologies:</label>
+        <span>
+            <button class="remove-all-btn">Remove all items</button>
+        </span>
+    </div>
+    <input type="text" id="technologies" name="technologies" placeholder="Enter new technology...">
+    <button id="add-btn">Add</button>
+    <div id="technology-list"></div>
+    <script>
+        const addButton = document.getElementById("add-btn");
+        const techInput = document.getElementById("technologies");
+        const techList = document.getElementById("technology-list");
+        const removeAllButton = document.querySelector(".remove-all-btn");
+        let cellCount = 0;
+
+        addButton.addEventListener("click", function () {
+            const techName = techInput.value;
+            const newTech = document.createElement("div");
+            newTech.classList.add("item");
+            newTech.innerText = techName;
+            techList.appendChild(newTech);
+            techInput.value = "";
+        });
+
+        removeAllButton.addEventListener("click", function () {
+            while (techList.firstChild) {
+                techList.removeChild(techList.firstChild);
+            }
+        });
+    </script>
+</body>
+
+</html>
